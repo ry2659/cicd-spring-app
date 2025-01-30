@@ -7,13 +7,13 @@ steps:
   # 2. Build Docker image
   - name: 'gcr.io/cloud-builders/docker'
     args: [
-      'build', '-t', 'us-central1-docker.pkg.dev/gcptraining-447016/springboot-repo/spring-boot-app', '.'
+      'build', '-t', 'us-central1-docker.pkg.dev/gcp-training-v2/cts-rahul-repo/spring-boot-app', '.'
     ]
 
   # 3. Push Docker image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: [
-      'push', 'us-central1-docker.pkg.dev/gcptraining-447016/springboot-repo/spring-boot-app'
+      'push', 'us-central1-docker.pkg.dev/gcp-training-v2/cts-rahul-repo/spring-boot-app'
     ]
 
   # 4. Deploy to Cloud Run
@@ -21,13 +21,13 @@ steps:
     entrypoint: gcloud
     args: [
       'run', 'deploy', 'spring-boot-app',
-      '--image', 'us-central1-docker.pkg.dev/gcptraining-447016/springboot-repo/spring-boot-app',
+      '--image', 'us-central1-docker.pkg.dev/gcp-training-v2/cts-rahul-repo/spring-boot-app',
       '--region', 'us-central1',
       '--platform', 'managed',
       '--allow-unauthenticated'
     ]
 
 images:
-  - 'us-central1-docker.pkg.dev/gcptraining-447016/springboot-repo/spring-boot-app'
+  - 'us-central1-docker.pkg.dev/gcp-training-v2/cts-rahul-repo/spring-boot-app'
 options:
   logging: CLOUD_LOGGING_ONLY
